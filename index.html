@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -15,7 +15,15 @@
     <link rel="shortcut icon" href="./favv.jpg" type="image/x-icon">
 </head>
 
-<body>
+<body class="is-loading">
+    <div class="loader" role="status" aria-live="polite" aria-label="Loading website">
+        <div class="loader-grid" aria-hidden="true"></div>
+        <div class="loader-content">
+            <span><b><h3>S + R</h3></b></span>
+            <strong class="loader-progress">0.00</strong>
+            <div class="loader-track" aria-hidden="true"><i></i></div>
+        </div>
+    </div>
     <div class="grain"></div>
     <header><a class="logo" href="#home">S<b>+</b>R</a>
         <nav><a href="#story">Pics</a><a href="#reasons">Reasons</a><a href="#letter">My letter</a></nav><button
@@ -26,7 +34,7 @@
             <div class="orb o1" data-scroll data-scroll-speed="-1"></div>
             <div class="orb o2" data-scroll data-scroll-speed="1"></div>
             <p class="eyebrow">A tiny corner of the internet, just for you</p>
-            <h1><span>For you,</span><em class="glow">my bacchi.</em></h1>
+            <h1><span>For you,</span><em class="glow">My Bacchi.</em></h1>
             <figure data-scroll data-scroll-speed="-.6">
                 <div class="hero-img"></div>
                 <figcaption>the easiest yes<br>of my life</figcaption>
@@ -112,7 +120,7 @@
             </div>
             <div class="note" aria-hidden="true"><button class="close" aria-label="Close">×</button><small>Happy 10
                     months!! </small>
-                <h2>My bangaram,</h2>
+                <h2>My Bangaram,</h2>
                 <p>First of all , HAPPY 10 MONTHS BABYYYYYY</p>
                 <p>its so unreal that we came this far, love i fell for you while making this :)</p>
                 <p>I don't know if there are enough beautiful words for what you mean to me, but I know I want to spend
@@ -124,7 +132,6 @@
                 <div>Always yours,<br><em>Soujanya</em></div>
             </div>
         </section>
-
 
         <section class="final-love" id="final-love" data-scroll-section aria-label="I love you Raksha">
             <div class="love-gradient" aria-hidden="true"></div>
@@ -152,7 +159,8 @@
                 </svg>
             </div>
             <div class="love-icon-dots" aria-hidden="true">
-                <span></span><span></span><span></span><span></span><span></span><span></span></div>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
             <div class="floating-hearts" aria-hidden="true">
                 <span>♡</span><span>♥</span><span>♡</span><span>✦</span><span>♥</span>
             </div>
@@ -198,17 +206,39 @@
         </section>
         <section class="reveal-section" data-scroll-section>
             <div class="reveal-container">
-                <p class="reveal-prompt">Click for a final thought...</p>
+                <p class="reveal-prompt">Click</p>
                 <div class="reveal-content">
                     <p>In a universe of fleeting moments, you are my northern star. thankyou for being the most
                         beautiful chapter in my story. every day with you is my favorite kind of forever my bacchu.</p>
-                    <small class="reveal-hint">click anywhere for another ✦</small>
+                    <small class="reveal-hint">✦ click ✦</small>
                 </div>
             </div>
         </section>
 
+        <section class="kisses-section" id="kisses" data-scroll-section aria-labelledby="kisses-title">
+            <div class="kisses-copy">
+                <p>Made with love, for Love</p>
+                <h2 id="kisses-title">A few kisses<br><em style="transform: rotate(-9deg);">MWUAHH</em></h2>
+            </div>
+            <div class="kisses-container" aria-hidden="true">
+                <img class="kiss-stamp" src="kis.svg" alt="">
+                <img class="kiss-stamp" src="kis.svg" alt="">
+                <img class="kiss-stamp" src="kis.svg" alt="">
+                <img class="kiss-stamp" src="kis.svg" alt="">
+                <img class="kiss-stamp" src="kis.svg" alt="">
+                <img class="kiss-stamp" src="kis.svg" alt="">
+                <img class="kiss-stamp" src="kis.svg" alt="">
+                <img class="kiss-stamp" src="kis.svg" alt="">
+                <img class="kiss-stamp" src="kis.svg" alt="">
+                <img class="kiss-stamp" src="kis.svg" alt="">
+                <img class="kiss-stamp" src="kis.svg" alt="">
+            </div>
+            <p class="kisses-signoff">XOXO</p>
+        </section>
         <footer data-scroll-section>
-            <p>Made with an addictive amount of love.</p><span>16 · 07 · 2026</span><a href="#home">↑</a>
+            <p>Made with an addictive amount of love.</p>
+            <span><a target="_blank" href="http://discord.com/login" style="text-decoration-style: solid;">16 · 07 · 2026</a></span>
+            <a href="#home">↑</a>
         </footer>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
