@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=Italiana&family=Parisienne&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./assets/favicon.jpg" type="image/x-icon">
+</head>
+
+<body class="is-loading">
+    <!-- loader -->
+    <div class="loader" role="status" aria-live="polite" aria-label="Loading website">
+        <div class="loader-grid" aria-hidden="true"></div>
+        <div class="loader-content">
+            <span><b>
+                    <h3>S + R</h3>
+                </b></span>
+            <strong class="loader-progress">0.00</strong>
+            <div class="loader-track" aria-hidden="true"><i></i></div>
+        </div>
+    </div>
+    <div class="grain"></div>
+    <header><a class="logo" href="index.html">S<b>+</b>R</a>
+        <nav><a href="index.html#story">Pics</a><a href="index.html#reasons">Reasons</a><a href="index.html#letter">My letter</a></nav><button
+            id="sound" aria-pressed="false"><i>▥</i> sound</button>
+    </header>
+    <!-- body -->
+    <main data-scroll-container>
+        <section class="gallery" id="gallery" data-scroll-section>
+            <div class="label"><b>04</b>gallery</div>
+            <div class="heading">
+                <p>A collection of our moments</p>
+                <h2>Our Story<br><em>in pictures.</em></h2>
+            </div>
+            <div class="gallery-container" aria-live="polite">
+                <div class="gallery-frame" role="presentation">
+                    <svg class="frame-doodle" viewBox="0 0 600 800" preserveAspectRatio="none" aria-hidden="true">
+                        <path d="M30 16 C108 7 179 19 255 14 S422 8 570 17 C584 18 590 29 588 47 C593 152 586 258 590 370 S584 612 588 753 C588 775 580 787 559 785 C435 793 337 784 241 788 S103 781 33 786 C14 786 9 775 12 754 C6 620 15 498 10 376 S15 150 11 44 C10 26 16 17 30 16 Z" />
+                    </svg>
+                    <div class="frame-content">
+                    <!-- Add more images here, then add the matching path to `pictures` below. -->
+                    <img id="gallery-photo" src="./assets/pic1.jpg" alt="Our favorite memory, photo 1 of 5">
+                    <span class="gallery-number"><b id="gallery-current">01</b> / <span id="gallery-total">05</span></span>
+                    </div>
+                </div>
+                <p class="gallery-caption" id="gallery-caption">A little moment worth keeping forever.</p>
+            </div>
+            <div class="gallery-nav" aria-label="Gallery controls">
+                <button id="gallery-prev" class="prev" type="button" aria-label="Previous picture">←</button>
+                <div class="gallery-dots" id="gallery-dots" aria-label="Choose a picture"></div>
+                <button id="gallery-next" class="next" type="button" aria-label="Next picture">→</button>
+            </div>
+            <a class="gallery-home" href="index.html#story">← back to our story</a>
+        </section>
+        <footer data-scroll-section>
+            <p>Made with an addictive amount of love.</p>
+            <span><a target="_blank" href="http://discord.com/login" style="text-decoration-style: solid;">16 · 07 ·
+                    2026</a></span>
+            <a href="#gallery">↑</a>
+        </footer>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const captions = [
+            ];
+            const files = [
+                ...Array.from({ length: 122 }, (_, i) => `gal (${i + 1}).jpg`),
+                ...Array.from({ length: 8 }, (_, i) => `gal (${i + 1}).png`)
+            ];
+            const pictures = files.map((file, i) => [`./assets/${file}`, captions[i % captions.length]]);
+            const photo = document.querySelector("#gallery-photo");
+            const caption = document.querySelector("#gallery-caption");
+            const current = document.querySelector("#gallery-current");
+            const progress = document.querySelector("#gallery-dots");
+            let index = 0;
+
+            const show = next => {
+                index = (next + pictures.length) % pictures.length;
+                photo.classList.add("is-changing");
+                setTimeout(() => {
+                    [photo.src, caption.textContent] = pictures[index];
+                    photo.alt = `Our favorite memory, photo ${index + 1} of ${pictures.length}`;
+                    current.textContent = String(index + 1).padStart(3, "0");
+                    progress.style.setProperty("--progress", `${(index + 1) / pictures.length * 100}%`);
+                    progress.setAttribute("aria-label", `Picture ${index + 1} of ${pictures.length}`);
+                    photo.classList.remove("is-changing");
+                }, 180);
+            };
+
+            progress.classList.add("is-progress");
+            progress.tabIndex = 0;
+            progress.addEventListener("click", event => {
+                const bounds = progress.getBoundingClientRect();
+                show(Math.min(pictures.length - 1, Math.floor((event.clientX - bounds.left) / bounds.width * pictures.length)));
+            });
+            document.querySelector("#gallery-total").textContent = String(pictures.length).padStart(3, "0");
+            document.querySelector("#gallery-prev").addEventListener("click", () => show(index - 1));
+            document.querySelector("#gallery-next").addEventListener("click", () => show(index + 1));
+            addEventListener("keydown", event => {
+                if (event.key === "ArrowLeft") show(index - 1);
+                if (event.key === "ArrowRight") show(index + 1);
+            });
+            show(0);
+
+            const started = performance.now();
+            const load = now => {
+                const progress = Math.min((now - started) / 1200, 1);
+                document.querySelector(".loader-progress").textContent = (progress * 10).toFixed(1);
+                if (progress < 1) return requestAnimationFrame(load);
+                document.body.classList.remove("is-loading");
+                document.querySelector(".loader").classList.add("is-complete");
+            };
+            requestAnimationFrame(load);
+        });
+    </script>
+</body>
+
+</html>
