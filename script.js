@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const updateLoader = now => {
         const progress = Math.min((now - loaderStartedAt) / 3000, 1);
         loaderProgress.textContent = `${(progress * 10).toFixed(1)}`;
-
+ 
         if (progress < 1) {
             requestAnimationFrame(updateLoader);
             return;
