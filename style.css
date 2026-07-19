@@ -279,7 +279,7 @@ figure {
 .hero-img {
     width: 100%;
     height: 100%;
-    background: linear-gradient(#6d193414, #6d193414), url("./3\ \(1\).png") center/cover
+    background: linear-gradient(#6d193414, #6d193414), url("./assets/hero.png") center/cover
 }
 
 figcaption {
@@ -391,27 +391,27 @@ figcaption {
 }
 
 .p1 {
-    background-image: url("./666.jpg");
+    background-image: url("./assets/pic1.jpg");
     transform: rotate(-2.5deg);
 }
 
 .p2 {
-    background-image: url("./55.png");
+    background-image: url("./assets/pic2.png");
     transform: rotate(4deg);
 }
 
 .p3 {
-    background-image: url("./IMG_3171.jpg");
+    background-image: url("./assets/pic4.jpg");
     transform: rotate(4deg);
 }
 
 .p4 {
-    background-image: url("./77.png");
+    background-image: url("./assets/pic5.png");
     transform: rotate(-3deg);
 }
 
 .p11 {
-    background-image: url(./11.jpeg);
+    background-image: url(./assets/pic3.png);
 }
 
 .track article b {
